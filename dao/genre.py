@@ -15,12 +15,14 @@ class GenreDAO:
         ent = Genre(**genre_d)
         self.session.add(ent)
         self.session.commit()
+        self.session.close()
         return ent
 
     def delete(self, rid):
         genre = self.get_one(rid)
         self.session.delete(genre)
         self.session.commit()
+        self.session.close()
 
     def update(self, genre_d):
         genre = self.get_one(genre_d.get("id"))
@@ -28,3 +30,11 @@ class GenreDAO:
 
         self.session.add(genre)
         self.session.commit()
+        self.session.close()
+        
+    def update_partial(self, genre):
+        self.session.add(genre)
+        self.session.commit()
+        self.session.close()
+
+        return genre

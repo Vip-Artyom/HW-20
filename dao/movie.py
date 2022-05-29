@@ -33,12 +33,14 @@ class MovieDAO:
         ent = Movie(**movie_d)
         self.session.add(ent)
         self.session.commit()
+        self.session.close()
         return ent
 
     def delete(self, rid):
         movie = self.get_one(rid)
         self.session.delete(movie)
         self.session.commit()
+        self.session.close()
 
     def update(self, movie_d):
         movie = self.get_one(movie_d.get("id"))
@@ -52,3 +54,11 @@ class MovieDAO:
 
         self.session.add(movie)
         self.session.commit()
+        self.session.close()
+
+    def update_partial(self, movie):
+        self.session.add(movie)
+        self.session.commit()
+        self.session.close()
+
+        return movie

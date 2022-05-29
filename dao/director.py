@@ -15,12 +15,14 @@ class DirectorDAO:
         ent = Director(**director_d)
         self.session.add(ent)
         self.session.commit()
+        self.session.close()
         return ent
 
     def delete(self, rid):
         director = self.get_one(rid)
         self.session.delete(director)
         self.session.commit()
+        self.session.close()
 
     def update(self, director_d):
         director = self.get_one(director_d.get("id"))
@@ -28,3 +30,11 @@ class DirectorDAO:
 
         self.session.add(director)
         self.session.commit()
+        self.session.close()
+
+    def update_partial(self, director):
+        self.session.add(director)
+        self.session.commit()
+        self.session.close()
+
+        return director

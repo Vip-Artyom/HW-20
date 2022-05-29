@@ -48,6 +48,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
+  "id": 21,
   "title": "Гарри Поттер мой кумир!",
   "trailer": "таким фильмам не нужны трейлеры",
   "year": 1990,
@@ -79,7 +80,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "id": 21,
+  "id": 22,
   "title": "-------",
   "trailer": "-----",
   "year": 0,
