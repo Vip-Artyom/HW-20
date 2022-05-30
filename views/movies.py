@@ -3,12 +3,14 @@ from flask_restx import Resource, Namespace
 
 from dao.model.movie import MovieSchema
 from implemented import movie_service
+from utils import auth_required
 
 movie_ns = Namespace('movies')
 
 
 @movie_ns.route('/')
 class MoviesView(Resource):
+    @auth_required
     def get(self):
         director = request.args.get("director_id")
         genre = request.args.get("genre_id")
@@ -35,6 +37,7 @@ class MoviesView(Resource):
 
 @movie_ns.route('/<int:mid>')
 class MovieView(Resource):
+    @auth_required
     def get(self, mid):
         b = movie_service.get_one(mid)
         sm_d = MovieSchema().dump(b)
