@@ -10,7 +10,6 @@ Accept: application/json
 
 GET http://127.0.0.1:10001/movies/?genre_id=4
 Accept: application/json
-Authorization: Artyom
 
 ###
 
