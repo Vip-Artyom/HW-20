@@ -13,6 +13,7 @@ class UserDAO:
 
     def create(self, user_d):
         ent = User(**user_d)
+
         self.session.add(ent)
         self.session.commit()
         self.session.close()
@@ -20,6 +21,7 @@ class UserDAO:
 
     def delete(self, uid):
         user = self.get_one(uid)
+
         self.session.delete(user)
         self.session.commit()
         self.session.close()
@@ -40,3 +42,6 @@ class UserDAO:
         self.session.close()
 
         return user
+
+    def get_user_by_username(self, username):
+        return self.session.query(User).filter(User.username == username).first()

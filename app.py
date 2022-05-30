@@ -4,6 +4,7 @@ from flask_restx import Api
 from config import Config
 from dao.model.user import User
 from setup_db import db
+from views.auth import auth_ns
 from views.directors import director_ns
 from views.genres import genre_ns
 from views.movies import movie_ns
@@ -24,6 +25,7 @@ def register_extensions(app):
     api.add_namespace(genre_ns)
     api.add_namespace(movie_ns)
     api.add_namespace(user_ns)
+    api.add_namespace(auth_ns)
     create_data(app, db)
 
 
@@ -40,7 +42,6 @@ def create_data(app, db):
 
 
 app = create_app(Config())
-app.debug = True
 
 if __name__ == '__main__':
-    app.run(host="localhost", port=10001, debug=True)
+    app.run(host="localhost", port=10001)

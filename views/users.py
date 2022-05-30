@@ -47,5 +47,6 @@ class UserView(Resource):
         return "", 204
 
     def delete(self, uid):
+        # @auth_required
         user_service.delete(uid)
         return "", 204
